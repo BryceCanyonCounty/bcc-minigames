@@ -5,8 +5,8 @@ lua54 'yes'
 author "BCC @Bytesizd"
 
 client_scripts {
-    'client/api.lua',
-    'client/main.lua'
+    'client/main.lua',
+    'client/api.lua'
 }
 
 ui_page {

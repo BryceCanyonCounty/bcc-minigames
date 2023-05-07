@@ -1,11 +1,8 @@
-local function getUtils ()
-    local UtilAPI = {}
+exports('initiate', function()
+    local MinigameAPI = {}
 
-    UtilAPI.Start = StartMinigame
+    MinigameAPI.Start = MiniGame.start
+    MinigameAPI.Stop = MiniGame.stop
     
-    return UtilAPI
-end
-
-exports('initiate',function()
-    return getUtils()
+    return MinigameAPI
 end)
