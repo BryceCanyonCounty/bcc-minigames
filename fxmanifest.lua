@@ -17,10 +17,9 @@ files {
     "ui/index.html",
     "ui/js/*.*",
     "ui/css/*.*",
-    "ui/fonts/*.*",
-    "ui/img/*.*"
+    "ui/fonts/*.*"
 }
 
 export "initiate"
 
-version '1.0.2'
+version '1.0.3'
