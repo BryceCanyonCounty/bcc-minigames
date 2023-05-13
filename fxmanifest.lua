@@ -9,6 +9,10 @@ client_scripts {
     'client/api.lua'
 }
 
+server_scripts {
+    'server/main.lua'
+}
+
 ui_page {
     "ui/index.html"
 }
@@ -17,9 +21,11 @@ files {
     "ui/index.html",
     "ui/js/*.*",
     "ui/css/*.*",
-    "ui/fonts/*.*"
+    "ui/fonts/*.*",
+    "ui/img/*.*",
+    "ui/media/*.*"
 }
 
 export "initiate"
 
-version '1.0.3'
+version '1.0.4'

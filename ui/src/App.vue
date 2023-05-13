@@ -3,12 +3,14 @@
         <Lockpicker v-if="game == 'lockpick'" :config="config" @result="handleResults"></Lockpicker>
         <RockPaper v-if="game == 'rps'" :config="config" @result="handleResults"></RockPaper>
         <SkillCheck v-if="game == 'skillcheck'" :config="config" @result="handleResults"></SkillCheck>
+        <HammerDown v-if="game == 'hammertime'" :config="config"  @result="handleResults"></HammerDown>
     </div>
 </template>
 <script>
 import RockPaper from './games/RockPaper.vue';
 import SkillCheck from './games/SkillCheck.vue';
-import Lockpicker from './games/LockPicker.vue'
+import Lockpicker from './games/LockPicker.vue';
+import HammerDown from './games/HammerDown.vue'
 
 import api from './api'
 
@@ -26,7 +28,8 @@ export default {
     components: {
         RockPaper,
         SkillCheck,
-        Lockpicker
+        Lockpicker,
+        HammerDown
     },
     mounted() {
         this.mlistener = window.addEventListener("message", this.onMessage);

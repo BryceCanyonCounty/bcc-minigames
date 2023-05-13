@@ -6,6 +6,7 @@
 1. Rock paper scissors
 2. Lock picking
 3. skillcheck
+4. HammerTime
 
 ## Installation
 1. Download the latest release `bcc-minigames.zip` at [/releases/latest](https://github.com/BryceCanyonCounty/bcc-minigames/releases/latest)
@@ -14,6 +15,24 @@
 4. Restart your server (unless you have nightly restarts)
 
 ## API Docs 
+
+### Hammer Time
+Minigame that lets you hammer nails to a board
+
+```lua
+RegisterCommand('playgame', function(args, rawCommand)
+    local cfg = {
+        focus = true, -- Should minigame take nui focus (required)
+        cursor = true, -- Should minigame have cursor  (required)
+        nails = 15, -- How many nails to be hammered
+        type = 'dark-wood' -- What color wood to display (light-wood, medium-wood, dark-wood)
+    }
+
+    MiniGame.start('hammertime', cfg, function(result)
+        print("Done!", result.result) -- true/false
+    end)
+end)
+```
 
 ### Lockpicking
 
