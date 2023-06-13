@@ -2,7 +2,7 @@
     <div>
         <div class="wood-plank" :class="wood_type">
             <table class="nail-board" v-if="!win">
-                <tbody>
+                <tbody v-show="ready">
                     <tr v-for="(row, rowIndex) in nail_slots" :key="rowIndex">
                         <td v-for="(cell, cellIndex) in row" :key="cellIndex">
                             <div class="nail-poll" @click="hammerNail(rowIndex, cellIndex, cell)">
@@ -41,6 +41,7 @@ export default {
             nail_count: 10,
             nailed: 0,
             win: false,
+            ready: false,
             wood_type: 'light-wood' //light-wood, medium-wood, dark-wood
         }
     },
@@ -64,6 +65,8 @@ export default {
                 this.nail_slots[row][col] = false
                 availableSlots.splice(index, 1)
             }
+
+            this.ready = true;
         },
         hammerNail(row, col, cell) {
             if (cell === false) {

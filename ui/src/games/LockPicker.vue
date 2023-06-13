@@ -1,5 +1,5 @@
 <template>
-    <div class="lock" ref="lock">
+    <div class="lock animate__animated animate__zoomIn" ref="lock">
         <div class="lockpick" ref="lockpick" v-if="!unlocked && !lose"></div>
         <div class="center-icon" v-show="!unlocked">
             <svg style="width: 50px; height: 50px;  fill: white;" :class="{ 'animate__animated animate__shakeX': errorhit }"

@@ -1,5 +1,5 @@
 <template>
-    <div class="container-wrap">
+    <div class="container-wrap animate__animated animate__backInDown">
         <canvas ref="canvas"></canvas>
         <div class="middle">
             <div v-if="!showx && !winner">{{ key_to_press }}</div>
