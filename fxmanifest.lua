@@ -14,11 +14,11 @@ server_scripts {
 }
 
 ui_page {
-    "ui/index.html"
+    "ui/shim.html"
 }
 
 files {
-    "ui/index.html",
+    "ui/shim.html",
     "ui/js/*.*",
     "ui/css/*.*",
     "ui/fonts/*.*",

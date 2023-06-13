@@ -44,3 +44,19 @@ RegisterNUICallback('result', function(data, cb)
         MiniGame.callback(data)
     end
 end)
+
+
+-- RegisterCommand('playgame', function(args, rawCommand)
+--     local cfg = {
+--         focus = true, -- Should minigame take nui focus (required)
+--         cursor = true, -- Should minigame have cursor  (required)
+--         nails = 15, -- How many nails to be hammered
+--         type = 'dark-wood' -- What color wood to display (light-wood, medium-wood, dark-wood)
+--     }
+
+--     exports['progressBars']:startUI(10000, 'TESTING THE PROGBAR CHANGES')
+
+--     MiniGame.start('hammertime', cfg, function(result)
+--         print("Done!", result.result) -- true/false
+--     end)
+-- end)
