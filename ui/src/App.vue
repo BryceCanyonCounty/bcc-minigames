@@ -4,13 +4,15 @@
         <RockPaper v-if="game == 'rps'" :config="config" @result="handleResults"></RockPaper>
         <SkillCheck v-if="game == 'skillcheck'" :config="config" @result="handleResults"></SkillCheck>
         <HammerDown v-if="game == 'hammertime'" :config="config"  @result="handleResults"></HammerDown>
+        <CowMilker v-if="game == 'cowmilker'" :config="config"  @result="handleResults"></CowMilker>
     </div>
 </template>
 <script>
 import RockPaper from './games/RockPaper.vue';
 import SkillCheck from './games/SkillCheck.vue';
 import Lockpicker from './games/LockPicker.vue';
-import HammerDown from './games/HammerDown.vue'
+import HammerDown from './games/HammerDown.vue';
+import CowMilker from './games/CowMilker.vue';
 
 import api from './api'
 
@@ -20,7 +22,6 @@ export default {
     name: 'DefaultLayout',
     data() {
         return {
-            devmode: true,
             game: null,
             config: {}
         }
@@ -29,7 +30,8 @@ export default {
         RockPaper,
         SkillCheck,
         Lockpicker,
-        HammerDown
+        HammerDown,
+        CowMilker
     },
     mounted() {
         this.mlistener = window.addEventListener("message", this.onMessage);

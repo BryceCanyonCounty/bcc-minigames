@@ -7,6 +7,7 @@
 2. Lock picking
 3. skillcheck
 4. HammerTime
+5. Cow Milk
 
 ## Installation
 1. Download the latest release `bcc-minigames.zip` at [/releases/latest](https://github.com/BryceCanyonCounty/bcc-minigames/releases/latest)
@@ -109,6 +110,24 @@ RegisterCommand('playgame', function(args, rawCommand)
 
     MiniGame.start('rps', cfg, function(result)
         print("Result?", result.result) -- win, lose, tie
+    end)
+end)
+```
+
+### Cow Milker
+
+```lua
+RegisterCommand('playgame', function(args, rawCommand)
+    local cfg = {
+        focus = true, -- Should minigame take nui focus (required)
+        cursor = true, -- Should minigame have cursor  (required)
+        timer = 30, -- The amount of seconds the game will run for
+        minMilkPerSqueez = 0.1,
+        maxMilkPerSqueez = 0.4
+    }
+
+    MiniGame.start('cowmilker', cfg, function(result)
+        print("Milk Collected!", result.collected) -- true/false
     end)
 end)
 ```
