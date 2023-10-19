@@ -117,6 +117,7 @@ end)
 ### Cow Milker
 
 ```lua
+local MiniGame = exports['bcc-minigames'].initiate()
 RegisterCommand('playgame', function(args, rawCommand)
     local cfg = {
         focus = true, -- Should minigame take nui focus (required)
