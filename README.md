@@ -31,7 +31,7 @@ RegisterCommand('playgame', function(args, rawCommand)
         type = 'dark-wood' -- What color wood to display (light-wood, medium-wood, dark-wood)
     }
 
-    MiniGame.start('hammertime', cfg, function(result)
+    MiniGame.Start('hammertime', cfg, function(result)
         print("Done!", result.result) -- true/false
     end)
 end)
@@ -64,7 +64,7 @@ RegisterCommand('playgame', function(args, rawCommand)
     }
 
 
-    MiniGame.start('lockpick', cfg, function(result)
+    MiniGame.Start('lockpick', cfg, function(result)
         print("Unlocked?", result.unlocked) -- true/false
     end)
 end)
@@ -89,7 +89,7 @@ RegisterCommand('playgame', function(args, rawCommand)
     }
 
 
-    MiniGame.start('skillcheck', cfg, function(result)
+    MiniGame.Start('skillcheck', cfg, function(result)
         print("Passed?", result.passed) -- true/false
     end)
 end)
@@ -108,7 +108,7 @@ RegisterCommand('playgame', function(args, rawCommand)
     }
 
 
-    MiniGame.start('rps', cfg, function(result)
+    MiniGame.Start('rps', cfg, function(result)
         print("Result?", result.result) -- win, lose, tie
     end)
 end)
@@ -126,7 +126,7 @@ RegisterCommand('playgame', function(args, rawCommand)
         maxMilkPerSqueez = 0.4
     }
 
-    MiniGame.start('cowmilker', cfg, function(result)
+    MiniGame.Start('cowmilker', cfg, function(result)
         print("Milk Collected!", result.collected) -- true/false
     end)
 end)
