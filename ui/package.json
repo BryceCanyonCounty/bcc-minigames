@@ -1,6 +1,6 @@
 {
   "name": "bcc-minigame",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "private": true,
   "scripts": {
     "shim": "node build/fxupdate.js",
@@ -11,6 +11,8 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@3d-dice/dice-box": "^1.1.4",
+    "@3d-dice/theme-rust": "^0.2.0",
     "animate.css": "^4.1.1",
     "axios": "^0.27.2",
     "core-js": "^3.8.3",

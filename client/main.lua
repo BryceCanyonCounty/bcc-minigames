@@ -26,6 +26,14 @@ MiniGame.start = function(minigame, config, callback)
     end
 end
 
+MiniGame.trigger = function(minigame, config)
+    SendNUIMessage({
+        action = 'trigger',
+        game = minigame,
+        config = config
+    })
+end
+
 MiniGame.stop = function()
     SendNUIMessage({
         action = 'stop'
@@ -36,7 +44,7 @@ end
 RegisterNUICallback('result', function(data, cb)
     cb('ok')
 
-    if MiniGame.config.focus ~= nil or MiniGame.config.cursor ~= nil then
+    if MiniGame.config ~= nil and (MiniGame.config.focus ~= nil or MiniGame.config.cursor ~= nil) then
         SetNuiFocus(false, false)
     end
 

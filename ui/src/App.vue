@@ -3,8 +3,9 @@
         <Lockpicker v-if="game == 'lockpick'" :config="config" @result="handleResults"></Lockpicker>
         <RockPaper v-if="game == 'rps'" :config="config" @result="handleResults"></RockPaper>
         <SkillCheck v-if="game == 'skillcheck'" :config="config" @result="handleResults"></SkillCheck>
-        <HammerDown v-if="game == 'hammertime'" :config="config"  @result="handleResults"></HammerDown>
-        <CowMilker v-if="game == 'cowmilker'" :config="config"  @result="handleResults"></CowMilker>
+        <HammerDown v-if="game == 'hammertime'" :config="config" @result="handleResults"></HammerDown>
+        <CowMilker v-if="game == 'cowmilker'" :config="config" @result="handleResults"></CowMilker>
+        <DiceRoller ref="diceroller" :config="config" @result="handleResults"></DiceRoller>
     </div>
 </template>
 <script>
@@ -13,6 +14,7 @@ import SkillCheck from './games/SkillCheck.vue';
 import Lockpicker from './games/LockPicker.vue';
 import HammerDown from './games/HammerDown.vue';
 import CowMilker from './games/CowMilker.vue';
+import DiceRoller from './games/DiceRoller.vue';
 
 import api from './api'
 
@@ -31,7 +33,8 @@ export default {
         SkillCheck,
         Lockpicker,
         HammerDown,
-        CowMilker
+        CowMilker,
+        DiceRoller
     },
     mounted() {
         this.mlistener = window.addEventListener("message", this.onMessage);
@@ -57,6 +60,11 @@ export default {
                 case "start":
                     this.game = event.data.game
                     this.config = event.data.config
+
+                    if (this.game == 'diceroller') this.$refs?.diceroller?.triggerAction('roll', this.config.options)
+                    break;
+                case "trigger":
+                    if (event.data.game == 'diceroller') this.$refs?.diceroller?.triggerAction(event.data.config.type, event.data.config.options)
                     break;
                 case "stop":
                     this.reset()
