@@ -132,3 +132,95 @@ RegisterCommand('playgame', function(args, rawCommand)
     end)
 end)
 ```
+
+### 3d Dice Roller
+
+**Notions:** 
+The notation argument can accept the following roll formats
+
+- simple string notation described as 'number of dice' + 'd' + 'number of sides on the die'. e.g.: `5d6` rolls five six-sided dice.
+- an array of string notation. e.g.: `{'2d10','2d6'}`
+- a Roll Object as described above. e.g.:`{qty = 5, sides = 10}`
+- an array of Roll Objects. e.g.:`{{qty = 2, sides = 10},{qty = 1, sides = 6}}`
+- a mixed array of Roll Objects and string notation. e.g.:`{{qty = 2, sides = 10},'2d8'}`
+
+**Supported Dice**
+"d4","d6","d8","d10","d12","d20","d100"
+
+```lua
+local MiniGame = exports['bcc-minigames'].initiate()
+
+RegisterCommand('rollDice', function(args, rawCommand)
+    local cfg = {
+        focus = false,  -- Should minigame take nui focus
+        cursor = false, -- Should minigame have cursor  (required for lockpick)
+        type = 'roll',
+        options = {
+            notation = { '4d20', '1d6' }, --options: 
+            autoClear = {
+                active = true,
+                time = 1000
+            }
+        }
+    }
+
+    MiniGame.Start('diceroller', cfg, function(result)
+        print("Results", result.data)
+        print("type", result.type)
+
+        -- Result.type is a string of the callback type (options: rollComplete, beforeRoll, dieComplete, removeComplete)
+
+    end)
+end)
+
+RegisterCommand('addDice', function(args, rawCommand)
+    local cfg = {
+        type = 'add',
+        options = {
+            notation = { '4d20', '1d6' },
+            autoClear = {
+                active = false,
+                time = 1000
+            }
+        }
+    }
+
+    MiniGame.Trigger('diceroller', cfg)
+end)
+
+RegisterCommand('removeDice', function(args, rawCommand)
+    local cfg = {
+        type = 'remove',
+        options = {
+            notation = { rollId = 2 }
+        }
+    }
+
+    MiniGame.Trigger('diceroller', cfg)
+end)
+
+RegisterCommand('rerollDice', function(args, rawCommand)
+    -- The notation argument here requires an roll object or an array of roll objects identifying the roll group groupId and die rollId you wish to reroll. Die result objects from previous rolls are valid arguments and can be passed in to trigger a reroll.
+
+    local cfg = {
+        type = 'reroll',
+        options = {
+            notation = {
+                dieType = "d20",
+                groupId = 0,
+                rollId = 0,
+                sides = 20,
+                theme = "default",
+                themeColor = "#33ddff",
+                value = 9
+            }
+        }
+    }
+
+    MiniGame.Trigger('diceroller', cfg)
+end)
+
+RegisterCommand('clearDice', function(args, rawCommand)
+    MiniGame.Trigger('diceroller', { type = 'clear' })
+end)
+```

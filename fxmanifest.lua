@@ -23,9 +23,12 @@ files {
     "ui/css/*.*",
     "ui/fonts/*.*",
     "ui/img/*.*",
-    "ui/media/*.*"
+    "ui/media/*.*",
+    "ui/assets/ammo/*.*",
+    "ui/assets/themes/*.*",
+    "ui/assets/themes/default/*.*"
 }
 
 export "initiate"
 
-version '1.0.6'
+version '1.0.7'
